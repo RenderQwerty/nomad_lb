@@ -24,4 +24,4 @@ COPY supervisor_consul-template.conf /etc/supervisor/conf.d/nginx.conf
 EXPOSE 80
 WORKDIR /app
 COPY entrypoint.sh .
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
