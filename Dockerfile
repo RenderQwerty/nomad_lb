@@ -20,6 +20,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 COPY supervisor_consul-template.conf /etc/supervisor/conf.d/consul-template.conf
 COPY consul-template.hcl /etc/consul-template/config.hcl
+COPY nginx-balancer.ctmpl /etc/consul-template/
 
 EXPOSE 80
 WORKDIR /app

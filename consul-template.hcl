@@ -5,10 +5,6 @@ consul {
         attempts = 12
         backoff = "250ms"
     }
-    reload_signal = "SIGHUP"
-    kill_signal = "SIGINT"
-    max_stale = "10m"
-    log_level = "warn"
 }
 
 template {

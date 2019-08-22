@@ -1,0 +1,16 @@
+upstream client {
+{{ range service "nginx" }}
+    server {{ .Address }}:{{ .Port }};
+{{ end }}
+    # it is required to prevent nginx failure
+    # in case if there are no matching services
+    # upstream should have at least one server here
+    server 127.0.0.1:123 down;
+}
+
+server {
+    listen 80;
+     location / {
+        proxy_pass client;
+     }
+}
