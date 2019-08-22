@@ -8,7 +8,7 @@ consul {
 }
 
 template {
-    source = "/etc/consul-template/nginx-balancer.ctmpl"
+    source = "/etc/templates/nginx-balancer.ctmpl"
     destination = "/etc/nginx/conf.d/server.conf"
     command = "nginx -s reload"
 }

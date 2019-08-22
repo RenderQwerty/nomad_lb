@@ -11,7 +11,8 @@ COPY --from=build /usr/bin/consul-template /usr/bin/consul-template
 RUN mkdir /etc/consul-template/
 
 RUN apt update &&\
-    apt install -y nginx supervisor
+    apt install -y nginx supervisor && \
+    mkdir /etc/templates
 
 RUN unlink /etc/nginx/sites-enabled/default
 # forward request and error logs to docker log collector
@@ -20,7 +21,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 COPY supervisor_consul-template.conf /etc/supervisor/conf.d/consul-template.conf
 COPY consul-template.hcl /etc/consul-template/config.hcl
-COPY nginx-balancer.ctmpl /etc/consul-template/
+COPY nginx-balancer.ctmpl /etc/templates/
 
 EXPOSE 80
 WORKDIR /app
