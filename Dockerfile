@@ -18,8 +18,8 @@ RUN unlink /etc/nginx/sites-enabled/default
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY consul-template.hcl /etc/consul-template/config.hcl
 COPY supervisor_consul-template.conf /etc/supervisor/conf.d/consul-template.conf
+COPY consul-template.hcl /etc/consul-template/config.hcl
 
 EXPOSE 80
 WORKDIR /app
